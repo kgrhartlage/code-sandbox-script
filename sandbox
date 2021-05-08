@@ -1,0 +1,50 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+directory="$HOME/Desktop"
+sandbox=$(echo "sandbox")
+date=$(date +"%F")
+
+if [[ $# -eq 1 ]]; then
+  folder=$(printf "%s/%s-%s" $directory $sandbox $1)
+else
+  folder=$(printf "%s/%s-%s" $directory $sandbox $date)
+fi
+
+mkdir $folder
+cd $folder
+
+touch index.html style.css index.js
+
+echo '<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Sandbox</title>
+  </head>
+  <body>
+
+    <script src="./main.js"></script>
+  </body>
+</html>' >>index.html
+
+echo '*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}' >>style.css
+
+echo -e "
+🎉 ${GREEN}Sandbox created. Let's play!${NC}"
+
+code .
