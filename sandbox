@@ -16,7 +16,7 @@ fi
 mkdir $folder
 cd $folder
 
-touch index.html style.css index.js
+touch index.html style.css main.js
 
 echo '<!DOCTYPE html>
 <html lang="en">
@@ -45,6 +45,6 @@ body {
 }' >>style.css
 
 echo -e "
-🎉 ${GREEN}Sandbox created. Let's play!${NC}"
+🥳 ${GREEN}Sandbox created. Let's play!${NC}"
 
 code .
